@@ -1,4 +1,4 @@
-package com.sigein.sisitema_gestion_informes.contrato;
+package com.sigein.sisitema_gestion_informes.contrato.model;
 
 import org.springframework.core.SpringVersion;
 
