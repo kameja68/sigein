@@ -1,4 +1,4 @@
-package com.sigein.sisitema_gestion_informes.crp;
+package com.sigein.sisitema_gestion_informes.crp.model;
 
 public class Crp {
     private Long idCrp;
