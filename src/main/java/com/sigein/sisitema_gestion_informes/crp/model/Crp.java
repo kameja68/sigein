@@ -1,16 +1,40 @@
 package com.sigein.sisitema_gestion_informes.crp.model;
 
-public class Crp {
-    private Long idCrp;
-    private String fechaCrp;
-    private  double valorCrp;
-    private   Integer codigoCrp;
+import com.sigein.sisitema_gestion_informes.crp.dto.CrearCrpDto;
+import jakarta.persistence.*;
+import org.hibernate.annotations.IdGeneratorType;
 
-    public Crp(Long idCrp, String fechaCrp, double valorCrp, Integer codigoCrp) {
+@Entity
+@Table(name = "CRP")
+
+public class Crp {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Crp")
+    private Long idCrp;
+    @Column(name = "codigo_crp")
+    private Integer codigoCrp;
+    @Column(name = "fecha_crp")
+    private String fechaCrp;
+    @Column(name = "valor_crp")
+    private Double valorCrp;
+
+    public Crp(Long idCrp, Integer codigoCrp, String fechaCrp, Double valorCrp) {
         this.idCrp = idCrp;
+        this.codigoCrp = codigoCrp;
         this.fechaCrp = fechaCrp;
         this.valorCrp = valorCrp;
-        this.codigoCrp = codigoCrp;
+    }
+
+    public Crp(CrearCrpDto crearCrpDto) {
+        this.codigoCrp = crearCrpDto.codigoCrp();
+        this.fechaCrp = crearCrpDto.fechaCrp();
+        this.valorCrp = crearCrpDto.valorCrp();
+
+    }
+
+    public Crp() {
+
     }
 
     public Long getIdCrp() {
@@ -21,6 +45,14 @@ public class Crp {
         this.idCrp = idCrp;
     }
 
+    public Integer getCodigoCrp() {
+        return codigoCrp;
+    }
+
+    public void setCodigoCrp(Integer codigoCrp) {
+        this.codigoCrp = codigoCrp;
+    }
+
     public String getFechaCrp() {
         return fechaCrp;
     }
@@ -29,19 +61,11 @@ public class Crp {
         this.fechaCrp = fechaCrp;
     }
 
-    public double getValorCrp() {
+    public Double getValorCrp() {
         return valorCrp;
     }
 
-    public void setValorCrp(double valorCrp) {
+    public void setValorCrp(Double valorCrp) {
         this.valorCrp = valorCrp;
-    }
-
-    public Integer getCodigoCrp() {
-        return codigoCrp;
-    }
-
-    public void setCodigoCrp(Integer codigoCrp) {
-        this.codigoCrp = codigoCrp;
     }
 }
