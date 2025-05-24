@@ -13,51 +13,43 @@ import org.springframework.web.bind.annotation.*;
 
 public class ContratistaController {
 
-private final IContratistaService iContratistaService;
+    private final IContratistaService iContratistaService;
 
 
     public ContratistaController(IContratistaService iContratistaService) {
         this.iContratistaService = iContratistaService;
     }
-    
 
 
     @PostMapping("/crear")
-public ResponseEntity<?> crearContratista(@RequestBody CrearContDto crearContDto){
-return iContratistaService.crearContratista(crearContDto);
+    public ResponseEntity<?> crearContratista(@RequestBody CrearContDto crearContDto) {
+        return iContratistaService.crearContratista(crearContDto);
     }
 
-@PutMapping("/editar/{idContratista}")
+    @PutMapping("/editar/{idContratista}")
     public ResponseEntity<?> editarContratista(@RequestBody EditarContratistaDto editarContratistaDto,
-                                               @PathVariable("idContratista") Long idContratista){
+                                               @PathVariable("idContratista") Long idContratista) {
 
-        return iContratistaService.editarContratista(editarContratistaDto,idContratista);
-}
+        return iContratistaService.editarContratista(editarContratistaDto, idContratista);
+    }
 
 
-@DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarContratista(@PathVariable ("id") Long id){
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarContratista(@PathVariable("id") Long id) {
 
-        return  iContratistaService.eliminarContratista(id);
-}
+        return iContratistaService.eliminarContratista(id);
+    }
 
-@GetMapping("/buscarCont/{id}")
-    public ResponseEntity<?> buscarCont(@PathVariable("id") Long id){
+    @GetMapping("/buscarCont/{id}")
+    public ResponseEntity<?> buscarCont(@PathVariable("id") Long id) {
 
         return iContratistaService.buscarPorId(id);
-}
+    }
 
-@GetMapping("/todosCont")
-public  ResponseEntity<?> todosCont(){
+    @GetMapping("/todosCont")
+    public ResponseEntity<?> todosCont() {
         return iContratistaService.mostrarTodosLosContratistas();
-}
-
-
-
-
-
-
-
+    }
 
 
 }

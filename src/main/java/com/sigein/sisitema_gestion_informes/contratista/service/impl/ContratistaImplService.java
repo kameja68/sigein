@@ -33,7 +33,6 @@ public class ContratistaImplService implements IContratistaService {
     public ResponseEntity<?> crearContratista(CrearContDto crearContDto) {
         try {
 
-
             if (crearContDto.nombre1().isEmpty()) {
                 return new ResponseEntity<>(
                         new ErrorDto("Por favor ingrese su nombre"), HttpStatus.INTERNAL_SERVER_ERROR);

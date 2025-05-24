@@ -1,20 +1,30 @@
 package com.sigein.sisitema_gestion_informes.contrato.model;
 
+import com.sigein.sisitema_gestion_informes.contrato.dto.CrearContratoDto;
+import jakarta.persistence.*;
 import org.springframework.core.SpringVersion;
-
+@Entity
+@Table(name ="CONTRATO")
 public class Contrato {
-
-    private Long idCurso;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name="ID_CONTRATO")
+    private Long idContrato;
+@Column(name = "OBJETO")
     private String objeto;
+    @Column(name="FECHA_INICIO")
     private String fechaInicio;
+    @Column(name="FECHA_FIN")
     private String fechaFin;
-    private  double valorContrato;
+    @Column(name="VALOR_VONTRATADO")
+    private  Integer valorContrato;
+    @Column(name = "NUMERO_PAGOS")
     private Integer numeroPagos;
 
 
 
-    public Contrato(long idCurso, String objeto, String fechaInicio, String fechaFin, double valorContrato, Integer numeroPagos) {
-        this.idCurso = idCurso;
+    public Contrato(Long idContrato, String objeto, String fechaInicio, String fechaFin, Integer valorContrato, Integer numeroPagos) {
+        this.idContrato = idContrato;
         this.objeto = objeto;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -22,12 +32,25 @@ public class Contrato {
         this.numeroPagos = numeroPagos;
     }
 
-    public Long getIdCurso() {
-        return idCurso;
+    public Contrato() {
+
     }
 
-    public void setIdCurso(Long idCurso) {
-        this.idCurso = idCurso;
+    public Contrato(CrearContratoDto crearContratoDto) {
+        this.objeto= crearContratoDto.objeto();
+        this.fechaInicio = crearContratoDto.fechaInicio();
+        this.fechaFin = crearContratoDto.fechaFin();
+        this.valorContrato = crearContratoDto.valorContrato();
+        this.numeroPagos = crearContratoDto.numeroPagos();
+
+    }
+
+    public Long getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(Long idContrato) {
+        this.idContrato = idContrato;
     }
 
     public String getObjeto() {
@@ -54,11 +77,11 @@ public class Contrato {
         this.fechaFin = fechaFin;
     }
 
-    public double getValorContrato() {
+    public Integer getValorContrato() {
         return valorContrato;
     }
 
-    public void setValorContrato(double valorContrato) {
+    public void setValorContrato(Integer valorContrato) {
         this.valorContrato = valorContrato;
     }
 
@@ -69,8 +92,6 @@ public class Contrato {
     public void setNumeroPagos(Integer numeroPagos) {
         this.numeroPagos = numeroPagos;
     }
-
-
 }
 
 

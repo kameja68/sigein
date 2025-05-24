@@ -6,6 +6,7 @@ public class Pagos {
     private double valorPago;
 
     public Pagos(Long idPagos, double valorPago) {
+
         this.idPagos = idPagos;
         this.valorPago = valorPago;
     }
