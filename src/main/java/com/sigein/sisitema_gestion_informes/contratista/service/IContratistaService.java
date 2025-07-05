@@ -6,13 +6,17 @@ import com.sigein.sisitema_gestion_informes.contratista.model.Contratista;
 import org.springframework.http.ResponseEntity;
 
 public interface IContratistaService {
-ResponseEntity<?> crearContratista(CrearContDto crearContDto);
-ResponseEntity<?> editarContratista(EditarContratistaDto editarContratistaDto,Long idContratista);
-ResponseEntity<?>eliminarContratista(Long idContratista);
+    ResponseEntity<?> crearContratista(CrearContDto crearContDto);
 
-ResponseEntity<?>buscarPorId(Long idContratista);
-ResponseEntity<?> mostrarTodosLosContratistas();
-void guardarEnBaseDeDatos(Contratista contratista);
+    ResponseEntity<?> editarContratista(EditarContratistaDto editarContratistaDto, Long idContratista);
+
+    ResponseEntity<?> eliminarContratista(Long idContratista);
+
+    ResponseEntity<?> buscarPorId(Long idContratista);
+
+    ResponseEntity<?> mostrarTodosLosContratistas();
+
+    void guardarEnBaseDeDatos(Contratista contratista);
 
 
 }

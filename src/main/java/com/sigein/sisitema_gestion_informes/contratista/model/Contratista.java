@@ -1,7 +1,11 @@
 package com.sigein.sisitema_gestion_informes.contratista.model;
 
 import com.sigein.sisitema_gestion_informes.contratista.dto.CrearContDto;
+import com.sigein.sisitema_gestion_informes.contrato.model.Contrato;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CONTRATISTA")
@@ -36,9 +40,15 @@ public class Contratista {
     private String constrasena;
     @Column(name = "estado")
     private boolean estado;
+    @OneToMany(
+            mappedBy = "idContrato",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            targetEntity = Contrato.class)
+    private List<Contrato> contratoList = new ArrayList<>();
 
 
-    public Contratista(Long idContratista, Integer identificacion, String nombre1, String nombre2, String apellido1, String apellido2, String direccion, String telefono, String email, String numeroCtaBancaria, String userName, String constrasena, boolean estado) {
+    public Contratista(Long idContratista, Integer identificacion, String nombre1, String nombre2, String apellido1, String apellido2, String direccion, String telefono, String email, String numeroCtaBancaria, String userName, String constrasena, boolean estado, List<Contrato> contratoList) {
         this.idContratista = idContratista;
         this.identificacion = identificacion;
         this.nombre1 = nombre1;
@@ -52,6 +62,7 @@ public class Contratista {
         this.userName = userName;
         this.constrasena = constrasena;
         this.estado = estado;
+        this.contratoList = contratoList;
     }
 
     public Contratista(CrearContDto crearContDto) {
@@ -79,6 +90,13 @@ this.estado= true;
         return idContratista;
     }
 
+    public List<Contrato> getContratoList() {
+        return contratoList;
+    }
+
+    public void setContratoList(List<Contrato> contratoList) {
+        this.contratoList = contratoList;
+    }
 
     public Integer getIdentificacion() {
         return identificacion;

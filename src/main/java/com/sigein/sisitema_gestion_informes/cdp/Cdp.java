@@ -13,6 +13,10 @@ public class Cdp {
         this.valorCdp = valorCdp;
     }
 
+    public Cdp() {
+
+    }
+
     public Long getIdCdp() {
         return idCdp;
     }

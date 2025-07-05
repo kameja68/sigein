@@ -1,8 +1,12 @@
 package com.sigein.sisitema_gestion_informes.crp.model;
 
+import com.sigein.sisitema_gestion_informes.contrato.model.Contrato;
 import com.sigein.sisitema_gestion_informes.crp.dto.CrearCrpDto;
 import jakarta.persistence.*;
 import org.hibernate.annotations.IdGeneratorType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CRP")
@@ -18,6 +22,7 @@ public class Crp {
     private String fechaCrp;
     @Column(name = "valor_crp")
     private Double valorCrp;
+
 
     public Crp(Long idCrp, Integer codigoCrp, String fechaCrp, Double valorCrp) {
         this.idCrp = idCrp;
@@ -41,9 +46,7 @@ public class Crp {
         return idCrp;
     }
 
-    public void setIdCrp(Long idCrp) {
-        this.idCrp = idCrp;
-    }
+
 
     public Integer getCodigoCrp() {
         return codigoCrp;
